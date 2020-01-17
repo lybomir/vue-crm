@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app id="inspire">
+    <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Mainlayout from './components/Mainlayout';
 export default {
-  name: 'app',
   components: {
-    HelloWorld
-  }
-}
+    Mainlayout,
+  },
+  props: {
+    source: String,
+  },
+  data: () => ({
+    drawer: null,
+  }),
+  computed: {
+    links() {
+      return [
+        { title: 'Login', icon: 'mdi-tilde', url: '/login' },
+        { title: 'categories', icon: 'mdi-tilde', url: '/categories' },
+      ];
+    },
+  },
+};
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
